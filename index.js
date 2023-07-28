@@ -1,3 +1,4 @@
 // require() shapes.js
-// require() inquirer 8.2.4
-// require() jest
+const inquirer = require("inquirer");
+const fs = require("fs/promises");
+const shapes = require("./lib/shapes.js");
