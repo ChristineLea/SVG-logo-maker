@@ -39,14 +39,23 @@ const questions = [
 			"TEXT COLOR: What color do you want the text to be? Enter a color keyword OR a hex color ",
 	},
 ];
-// function writeFile() {
-// 	fs.writeFile("./examples/logo.svg", )
-// }
+function writeFile(fileName, data) {
+	fs.writeFile(fileName, data, (err) => {
+		err
+			? console.error("\x1b[31m%s \x1b[0m", "Error!")
+			: console.log(
+					"\x1b[32m%s \x1b[0m",
+					"Successfully generated SVG Logo!"
+			  );
+	});
+}
+
 async function init() {
 	const data = await inquirer.prompt(questions);
 
-	const shape = await shapes.generateMarkdown(data);
-	console.log(shape);
+	const svgLogo = await shapes.generateMarkdown(data);
+
+	writeFile("./examples/logo.svg", svgLogo);
 }
 init();
 
