@@ -1,6 +1,8 @@
 // require() shapes.js
 const inquirer = require("inquirer");
 const fs = require("fs/promises");
+const validateColor = require("validate-color");
+const { validateHTMLColorHex, validateHTMLColorName } = validateColor;
 const shapes = require("./lib/shapes.js");
 
 // TODO create a questions array
@@ -8,19 +10,26 @@ const questions = [
 	{
 		name: "shape",
 		type: "list",
-		message: "What shape do you want to use for your logo?",
+		message: "Select the logo shape :",
 		choices: ["Circle", "Triangle", "Square"],
 	},
 	{
 		name: "shapeFill",
 		type: "input",
-		message:
-			"SHAPE COLOR: What color do you want the shape to be?  Enter a color keyword OR a hex color ",
+		message: "Enter a Named Color or Hex Color for the logo shape :",
+		validate: function (answer) {
+			
+		if (validateHTMLColorName(answer) || validateHTMLColorHex(answer)) {
+			return true;
+		} else {
+			console.error("Enter a valid Color keyword or Hex Color.");
+		}
+		}
 	},
 	{
 		name: "text",
 		type: "input",
-		message: "TEXT: Enter up to three characters to add to your logo",
+		message: "Enter 1 - 3 characters for the logo text :",
 		validate(answer) {
 			// check no more than 3 characters
 			if (answer.length >= 4) {
@@ -35,8 +44,7 @@ const questions = [
 	{
 		name: "textColor",
 		type: "input",
-		message:
-			"TEXT COLOR: What color do you want the text to be? Enter a color keyword OR a hex color ",
+		message: "Enter a Named Color or Hex Color for the logo text :",
 	},
 ];
 function writeFile(fileName, data) {
@@ -49,6 +57,7 @@ function writeFile(fileName, data) {
 			  );
 	});
 }
+
 
 async function init() {
 	const data = await inquirer.prompt(questions);
@@ -64,4 +73,4 @@ init();
 // TODO writeFile
 // set shape
 // TODO hex color
-// write svg 
+// write svg
