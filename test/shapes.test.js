@@ -1,13 +1,3 @@
-// /^#[0-9A-F]{6}$/i.test("#AABBCC");
-// 6 char hex code
-// ^          -> match beginning
-// #          -> a hash
-// [0-9A-F]   -> any integer from 0 to 9 and any letter from A to F
-// {6}        -> the previous group appears exactly 6 times
-// $          -> match end
-// i          -> ignore case
-// test for a 6hex code
-
 // import shapes.js
 const Shapes = require("../lib/shapes.js");
 
@@ -23,6 +13,18 @@ describe("Circle", () => {
 			);
 		});
 	});
+	describe("renderText", () => {
+		it("should render color text", () => {
+			// added the color variable as a placeholder for the shapeFill argument expected when instantiating a new Circle class
+			const color = "color";
+			const textColor = "white";
+			const text = "ABC";
+			const circleText = new Circle(color, textColor, text);
+			expect(circleText.renderText()).toEqual(
+				`<text x="150" y="125" font-size="60" text-anchor="middle" fill="white">ABC`
+			);
+		});
+	});
 });
 
 describe("Triangle", () => {
@@ -35,8 +37,19 @@ describe("Triangle", () => {
 			);
 		});
 	});
+	describe("renderText", () => {
+		it("should render color text", () => {
+			// added the color variable as a placeholder for the shapeFill argument expected when instantiating a new Triangle class
+			const color = "color";
+			const textColor = "white";
+			const text = "ABC";
+			const triangleText = new Triangle(color, textColor, text);
+			expect(triangleText.renderText()).toEqual(
+				`<text x="150" y="125" font-size="60" text-anchor="middle" fill="white">ABC`
+			);
+		});
+	});
 });
-
 
 describe("Square", () => {
 	describe("renderShape", () => {
@@ -47,5 +60,17 @@ describe("Square", () => {
 				'<rect width="130" height="130" x="85" y="35"  fill="pink"/>'
 			);
 		});
-	});
+    });
+    	describe("renderText", () => {
+			it("should render color text", () => {
+				// added the color variable as a placeholder for the shapeFill argument expected when instantiating a new Square class
+				const color = "color";
+				const textColor = "white";
+				const text = "ABC";
+				const squareText = new Square(color, textColor, text);
+				expect(squareText.renderText()).toEqual(
+					`<text x="150" y="125" font-size="60" text-anchor="middle" fill="white">ABC`
+				);
+			});
+		});
 });

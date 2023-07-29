@@ -1,11 +1,11 @@
-// require() shapes.js
+
 const inquirer = require("inquirer");
 const fs = require("fs/promises");
 const validateColor = require("validate-color");
 const { validateHTMLColorHex, validateHTMLColorName } = validateColor;
 const shapes = require("./lib/shapes.js");
 
-// TODO create a questions array
+
 const questions = [
 	{
 		name: "shape",
@@ -60,6 +60,7 @@ const questions = [
 		},
 	},
 ];
+
 function writeFile(fileName, data) {
 	fs.writeFile(fileName, data, (err) => {
 		if (err) {
@@ -71,9 +72,9 @@ function writeFile(fileName, data) {
 
 async function init() {
 	const data = await inquirer.prompt(questions);
-	console.log("\x1b[33m%s \x1b[0m", "Preparing your logo ...");
-	const svgLogo = await shapes.generateMarkdown(data);
 
+	const svgLogo = await shapes.generateMarkdown(data);
 	writeFile("./examples/logo.svg", svgLogo);
 }
+
 init();
