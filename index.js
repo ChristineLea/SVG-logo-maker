@@ -45,7 +45,7 @@ const questions = [
 async function init() {
 	const data = await inquirer.prompt(questions);
 
-	const shape = await shapes(data);
+	const shape = await shapes.generateMarkdown(data);
 	console.log(shape);
 }
 init();
