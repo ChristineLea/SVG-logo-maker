@@ -82,8 +82,9 @@ Not currently accepting contribution on this project.
  ## 6. Authors & Acknowledgement
   
  Christine Lea
- I would like to acknowledge the package dependencies used in this program, as well as a link to their GitHub repositories[Inquirer NPM](https://github.com/SBoudrias/Inquirer.js) 
- [Validate Color](https://github.com/dreamyguy/validate-color)
+ I would like to acknowledge the package dependencies used in this program, as well as a link to their GitHub repositories
+ * [Inquirer NPM](https://github.com/SBoudrias/Inquirer.js) 
+ * [Validate Color](https://github.com/dreamyguy/validate-color)
 
  ## 7. License
   
