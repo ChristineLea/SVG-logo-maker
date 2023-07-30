@@ -78,3 +78,4 @@ async function init() {
 }
 
 init();
+// try catch
