@@ -1,11 +1,11 @@
-
+// Dependencies/Modules
 const inquirer = require("inquirer");
 const fs = require("fs/promises");
 const validateColor = require("validate-color");
 const { validateHTMLColorHex, validateHTMLColorName } = validateColor;
 const shapes = require("./lib/shapes.js");
 
-
+// Questions Array for inquirer prompt
 const questions = [
 	{
 		name: "shape",
@@ -18,6 +18,7 @@ const questions = [
 		type: "input",
 		message: "Enter a Named Color or Hex Color for the logo shape :",
 		validate: function (answer) {
+			// Validate user input is either a Named color keyword or a Hex color using the validate-color NPM
 			if (validateHTMLColorName(answer) || validateHTMLColorHex(answer)) {
 				return true;
 			} else {
@@ -49,6 +50,7 @@ const questions = [
 		type: "input",
 		message: "Enter a Named Color or Hex Color for the logo text :",
 		validate: function (answer) {
+			// Validate user input is either a Named color keyword or a Hex color using the validate-color NPM
 			if (validateHTMLColorName(answer) || validateHTMLColorHex(answer)) {
 				return true;
 			} else {
@@ -61,6 +63,7 @@ const questions = [
 	},
 ];
 
+// creates the logo.svg
 function writeFile(fileName, data) {
 	fs.writeFile(fileName, data, (err) => {
 		if (err) {
@@ -70,12 +73,16 @@ function writeFile(fileName, data) {
 	console.log("\x1b[32m%s \x1b[0m", "Generated logo.svg");
 }
 
+// Runs on initialisation 
 async function init() {
+	// "inquires" for input from a user & returns the data
 	const data = await inquirer.prompt(questions);
 
+	// data is passed to the shapes.js module 
 	const svgLogo = await shapes.generateMarkdown(data);
+
+	// returned data is used to create the logo.svg
 	writeFile("./examples/logo.svg", svgLogo);
 }
 
 init();
-// try catch

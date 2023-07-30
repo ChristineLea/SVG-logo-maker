@@ -4,6 +4,7 @@
   
  ## Description 
   
+  #ffb3ba
  This program will generate a basic SVG (Scalable Vector Graphic) Logo via the command line which can then be used for projects. Written using vanilla JavaScript language, and uses Object Orientated Programming (OOP) to store the data for each related SVG shape it can generate. This program runs in the Node.js environment, and requires Inquirer 8.2.4 NPM and Validate Color NPM as dependencies.
 
  Watch the [walkthrough video]() to view the program's functionality.
@@ -61,6 +62,7 @@ The program will "inquire" through a series of prompts, and generate a basic log
 * Color keywords or Hex colors are the accepted format in which a color selection can be made. 
 * 1 - 3 characters can be included in the logo text
 * Logo shape can be either a circle, triangle, or square
+[Logo Example](./examples/logo.svg)
   
  ## 3. Contributing 
   
@@ -83,6 +85,7 @@ Not currently accepting contribution on this project.
  Christine Lea
  I would like to acknowledge the package dependencies used in this program, as well as a link to their GitHub repositories[Inquirer NPM](https://github.com/SBoudrias/Inquirer.js) 
  [Validate Color](https://github.com/dreamyguy/validate-color)
+
  ## 7. License
   
  This project is covered under MIT license.
